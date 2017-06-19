@@ -1,9 +1,10 @@
 {
   "name": "@dcs/ngx-build-tools",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Tools and helpers to support dev and production build of angular apps",
   "main": "build/index.js",
   "scripts": {
+    "commit": "git-cz",
     "watch": "tsc -w -p tsconfig.json",
     "build": "tsc -p tsconfig.json"
   },
@@ -27,6 +28,9 @@
     "@types/node-sass": "^3.10.32",
     "@types/rollup": "^0.41.0",
     "@types/yargs": "^6.6.0",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
+    "pre-git": "^3.15.0",
     "ts-node": "^3.0.6",
     "tslib": "^1.7.1",
     "typescript": "^2.3.4"
@@ -42,5 +46,17 @@
     "pretty-error": "^2.1.0",
     "rollup": "^0.43.0",
     "yargs": "^8.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "pre-git": {
+      "enabled": true,
+      "commit-msg": "conventional",
+      "pre-push": [
+        "npm run build"
+      ]
+    }
   }
 }
