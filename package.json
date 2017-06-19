@@ -7,11 +7,14 @@
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
     "lint": "tslint --project tsconfig.json --type-check",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "build": "run-s lint compile",
     "compile": "tsc -p tsconfig.json",
     "watch": "tsc -w -p tsconfig.json",
     "precommit": "npm run lint",
-    "prepush": "npm run build"
+    "prepush": "npm run build",
+    "version": "run-s build changelog",
+    "postversion": "git push && git push --tags"
   },
   "bin": {
     "ngx-build-watch": "./build/scripts/watch.js",
