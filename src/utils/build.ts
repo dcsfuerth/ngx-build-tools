@@ -10,13 +10,15 @@ import { Bundle, Options, Format } from '@types/rollup';
 
 const ng2Inline = require('angular2-inline-template-style');
 
-
-export interface RollupConfig extends Options {
+export interface IRollupConfig extends Options {
   dest: string;
   format?: Format;
 }
 
-export function buildFactory(rollupConfig: RollupConfig, doCache: boolean = false) {
+export function buildFactory(
+  rollupConfig: IRollupConfig,
+  doCache: boolean = false
+) {
   let rollupCache: Bundle | undefined;
   const pe = new PrettyError();
 
@@ -32,32 +34,37 @@ export function buildFactory(rollupConfig: RollupConfig, doCache: boolean = fals
 
     rollup(rollupConfig)
       .then(bundle => {
-        let result = bundle.generate({
-          format: rollupConfig.format,
+        const result = bundle.generate({
+          format: rollupConfig.format
         });
 
         rollupCache = bundle;
 
-        bundle.write({
-          format: rollupConfig.format,
-          dest: rollupConfig.dest
-        }).then(() => {
-          console.log('\n\x1b[32m%s\x1b[0m', 'Successful build!');
-          console.timeEnd(`Build time ${rollupConfig.entry}`);
-        });
+        bundle
+          .write({
+            dest: rollupConfig.dest,
+            format: rollupConfig.format
+          })
+          .then(() => {
+            console.log('\n\x1b[32m%s\x1b[0m', 'Successful build!');
+            console.timeEnd(`Build time ${rollupConfig.entry}`);
+          });
       })
       .catch(error => {
         rollupCache = undefined;
         console.log(pe.render(error));
       });
-  }
+  };
 }
 
 export function isCodeChange(filename?: string): boolean {
-  return (!!filename && (filename.endsWith('.js') || filename.endsWith('.ts') ));
+  return !!filename && (filename.endsWith('.js') || filename.endsWith('.ts'));
 }
 
-export function buildPackageJsonForProduction(pathToSource: string, destination: string) {
+export function buildPackageJsonForProduction(
+  pathToSource: string,
+  destination: string
+) {
   const pjs = require(path.resolve(pathToSource));
 
   delete pjs.devDependencies;
@@ -70,14 +77,13 @@ export function buildPackageJsonForProduction(pathToSource: string, destination:
 export function compileCss(globPattern: string, pathToPostcssConfig: string) {
   const postcssConfig = require(path.resolve(pathToPostcssConfig));
 
-  let scssFiles = glob.sync(globPattern, {});
+  const scssFiles = glob.sync(globPattern, {});
 
   scssFiles.forEach((filename: string) => {
-    let scss = fs.readFileSync(filename, 'utf-8');
+    const scss = fs.readFileSync(filename, 'utf-8');
     let css = sass
       .renderSync({ data: scss, outputStyle: 'compressed' })
-      .css
-      .toString()
+      .css.toString()
       // remove linebreak at the end
       .replace(/^\s+|\s+$/g, '');
     css = postcss(postcssConfig).process(css).css;
@@ -87,21 +93,28 @@ export function compileCss(globPattern: string, pathToPostcssConfig: string) {
 }
 
 export function inlineNgTemplates(globPattern: string) {
-  let components = glob.sync(globPattern, {});
+  const components = glob.sync(globPattern, {});
 
   components.forEach(filename => {
-    let dirname = path.dirname(filename);
+    const dirname = path.dirname(filename);
 
     let component = fs.readFileSync(filename, 'utf-8');
-    component = ng2Inline(component, { base: dirname, compress: true }).then((content: Buffer) => {
+    component = ng2Inline(component, {
+      base: dirname,
+      compress: true
+    }).then((content: Buffer) => {
       fs.writeFileSync(filename, content, 'utf-8');
     });
-
   });
 }
 
 // thanks wrong typings
-export const yargsFailFn: any = function (msg: string, err: Error, args: yargs.Argv) {
+export const yargsFailFn: any = function(
+  msg: string,
+  err: Error,
+  // tslint:disable-next-line:trailing-comma
+  args: yargs.Argv
+) {
   console.error('');
   console.error('Error: ', msg);
   console.error('');
