@@ -1,6 +1,6 @@
 {
   "name": "@dcs/ngx-build-tools",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Tools and helpers to support dev and production build of angular apps",
   "main": "build/index.js",
   "scripts": {
