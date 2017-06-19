@@ -1,3 +1,13 @@
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/dcsfuerth/ngx-build-tools/compare/v1.2.2...v1.2.3) (2017-06-19)
+
+
+### Bug Fixes
+
+* **npm:** typo ([95a4ff8](https://github.com/dcsfuerth/ngx-build-tools/commit/95a4ff8))
+
+
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/dcsfuerth/ngx-build-tools/compare/v1.2.1...v1.2.2) (2017-06-19)
 
