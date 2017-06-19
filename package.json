@@ -13,7 +13,7 @@
     "watch": "tsc -w -p tsconfig.json",
     "precommit": "npm run lint",
     "prepush": "npm run build",
-    "version": "run-s build changelog && git add Changelog.md",
+    "version": "run-s build changelog && git add CHANGELOG.md",
     "postversion": "git push && git push --tags"
   },
   "bin": {
