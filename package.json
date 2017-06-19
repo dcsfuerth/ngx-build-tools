@@ -1,0 +1,46 @@
+{
+  "name": "@dcs/ngx-build-tools",
+  "version": "0.3.0",
+  "description": "Tools and helpers to support dev and production build of angular apps",
+  "main": "build/index.js",
+  "scripts": {
+    "watch": "tsc -w -p tsconfig.json",
+    "build": "tsc -p tsconfig.json"
+  },
+  "bin": {
+    "ngx-build-watch": "./build/scripts/watch.js",
+    "ngx-inline-styles": "./build/scripts/inline-ng-styles.js",
+    "ngx-build-package-json": "./build/scripts/build-package-json.js"
+  },
+  "keywords": [
+    "angular",
+    "rollup",
+    "typescript"
+  ],
+  "author": "Marc Remolt <marc.remolt@dcs-fuerth.de>",
+  "license": "ISC",
+  "repository": "dcsfuerth/ngx-build-tools",
+  "devDependencies": {
+    "@types/chokidar": "^1.7.0",
+    "@types/glob": "^5.0.30",
+    "@types/node": "^7.0.31",
+    "@types/node-sass": "^3.10.32",
+    "@types/rollup": "^0.41.0",
+    "@types/yargs": "^6.6.0",
+    "ts-node": "^3.0.6",
+    "tslib": "^1.7.1",
+    "typescript": "^2.3.4"
+  },
+  "dependencies": {
+    "@angular/compiler-cli": "^4.2.2",
+    "@angular/core": "^4.2.2",
+    "angular2-inline-template-style": "^1.1.0",
+    "chokidar": "^1.7.0",
+    "glob": "^7.1.2",
+    "node-sass": "^4.5.3",
+    "postcss": "^6.0.2",
+    "pretty-error": "^2.1.0",
+    "rollup": "^0.43.0",
+    "yargs": "^8.0.2"
+  }
+}

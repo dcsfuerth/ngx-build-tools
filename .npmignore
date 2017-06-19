@@ -1,0 +1,15 @@
+build/**/*.spec.js
+build/**/*.spec.js.map
+temp/**/*
+config/**/*
+coverage
+.nyc_output
+.editorconfig
+.nycrc
+mocha.opts
+tsconfig.json
+tsconfig.*.json
+bitbucket-pipelines.yml
+clean-ngc.sh
+tslint.json
+yarn.lock
