@@ -6,7 +6,9 @@
   "scripts": {
     "commit": "git-cz",
     "watch": "tsc -w -p tsconfig.json",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "prepush": "npm run build",
+    "commitmsg": "validate-commit-msg"
   },
   "bin": {
     "ngx-build-watch": "./build/scripts/watch.js",
@@ -30,10 +32,11 @@
     "@types/yargs": "^6.6.0",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.0.0",
-    "pre-git": "^3.15.0",
+    "husky": "^0.13.4",
     "ts-node": "^3.0.6",
     "tslib": "^1.7.1",
-    "typescript": "^2.3.4"
+    "typescript": "^2.3.4",
+    "validate-commit-msg": "^2.12.2"
   },
   "dependencies": {
     "@angular/compiler-cli": "^4.2.2",
@@ -50,13 +53,6 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    },
-    "pre-git": {
-      "enabled": true,
-      "commit-msg": "conventional",
-      "pre-push": [
-        "npm run build"
-      ]
     }
   }
 }
