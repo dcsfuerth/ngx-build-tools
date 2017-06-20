@@ -14,9 +14,9 @@
     "test": "mocha --opts mocha.opts",
     "test:watch": "npm run test -- --watch",
     "test:coverage:run": "cross-env NODE_ENV=test nyc --extension .ts npm run test",
-    "test:coverage:check": "nyc check-coverage --statements 39 --branches 37 --functions 15 --lines 39",
+    "test:coverage:check": "nyc check-coverage --statements 50 --branches 37 --functions 35 --lines 50",
     "test:coverage": "run-s test:coverage:run test:coverage:check",
-    "precommit": "npm run lint",
+    "precommit": "run-s lint test",
     "prepush": "npm run build",
     "version": "run-s build changelog && git add CHANGELOG.md",
     "postversion": "git push && git push --tags"
