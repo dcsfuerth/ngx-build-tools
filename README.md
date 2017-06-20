@@ -37,5 +37,5 @@ ngx-build-package-json --source package.json --destination build/paclage.json
 This command inlines all templates and styles of angular components in a specified directory, compiling sass and adding postcss transformations.
 
 ```sh
-ngx-inline-styles --cssGlob 'src/**/*.component.scss --componentsGlob 'src/**/*.component.ts' --postcssConfig my-postcss.config.js
+ngx-inline-styles --cssGlob 'src/**/*.component.scss' --componentsGlob 'src/**/*.component.ts' --postcssConfig my-postcss.config.js
 ```
