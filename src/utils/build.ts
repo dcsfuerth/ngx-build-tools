@@ -6,7 +6,7 @@ import * as sass from 'node-sass';
 import * as yargs from 'yargs';
 import * as PrettyError from 'pretty-error';
 import { rollup } from 'rollup';
-import { Bundle, Options, Format } from '@types/rollup';
+import { Bundle, Options, Format } from 'rollup';
 
 const ng2Inline = require('angular2-inline-template-style');
 
@@ -92,20 +92,25 @@ export function compileCss(globPattern: string, pathToPostcssConfig: string) {
   });
 }
 
-export function inlineNgTemplates(globPattern: string) {
+export function inlineNgTemplates(globPattern: string): Promise<any> {
   const components = glob.sync(globPattern, {});
+  const promises: Array<Promise<any>> = [];
 
   components.forEach(filename => {
     const dirname = path.dirname(filename);
+    const component = fs.readFileSync(filename, 'utf-8');
 
-    let component = fs.readFileSync(filename, 'utf-8');
-    component = ng2Inline(component, {
-      base: dirname,
-      compress: true
-    }).then((content: Buffer) => {
-      fs.writeFileSync(filename, content, 'utf-8');
-    });
+    promises.push(
+      ng2Inline(component, {
+        base: dirname,
+        compress: true
+      }).then((content: Buffer) => {
+        fs.writeFileSync(filename, content, 'utf-8');
+      })
+    );
   });
+
+  return Promise.all(promises);
 }
 
 // thanks wrong typings

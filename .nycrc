@@ -1,0 +1,10 @@
+{
+  "reporter": [
+    "lcov",
+    "html",
+    "text"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
+  ]
+}
