@@ -8,7 +8,7 @@ export function replaceTypescriptDefaultImportsPlugin(
   return {
     transform(code: string, id: string) {
       const importRegex =
-        options.regexp || /import\s+\*\s+as\s(\w+)\s+from\s+('.*?')/;
+        options.regexp || /import\s+\*\s+as\s(\w+)\s+from\s+('.*?')/g;
       code = code.replace(importRegex, 'import $1 from $2');
 
       return {
