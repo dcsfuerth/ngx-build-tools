@@ -1,3 +1,8 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/dcsfuerth/ngx-build-tools/compare/v1.3.0...v1.4.0) (2017-08-22)
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/dcsfuerth/ngx-build-tools/compare/v1.2.6...v1.3.0) (2017-06-22)
 
