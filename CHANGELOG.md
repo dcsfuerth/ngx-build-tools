@@ -1,3 +1,13 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/dcsfuerth/ngx-build-tools/compare/v1.4.0...v1.5.0) (2017-09-19)
+
+
+### Features
+
+* **rollup:** Rollup plugin now creates source maps ([1112ffd](https://github.com/dcsfuerth/ngx-build-tools/commit/1112ffd))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/dcsfuerth/ngx-build-tools/compare/v1.3.0...v1.4.0) (2017-08-22)
 
