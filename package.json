@@ -69,6 +69,7 @@
     "angular2-inline-template-style": "^1.1.0",
     "chokidar": "^1.7.0",
     "glob": "^7.1.2",
+    "magic-string": "^0.22.4",
     "node-sass": "^4.5.3",
     "postcss": "^6.0.9",
     "pretty-error": "^2.1.1",
